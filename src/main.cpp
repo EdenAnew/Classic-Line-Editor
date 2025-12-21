@@ -11,13 +11,22 @@ int main(int argc, char* argv[])
 	std::filesystem::path chosen_path{};
 
 	if (argc == 3)
-		chosen_path = FileHandler::find_directory(argv[1], argv[2]);
+	{
+		try 
+		{
+			chosen_path = FileHandler::find_directory(argv[1], argv[2]);
+		}
+		catch(const std::invalid_argument& e)
+		{
+			std::cerr << "Error: " << e.what();
+			return 1;
+		}
+	}
 	else if(argc == 2)
 		chosen_path = FileHandler::find_directory(argv[1]);
 	else
 	{
-		//Display the help menu
-		//Quit
+		std::cerr << "Error: Need file name to initialize to (and, optionally, a directory!)";
 		return 1;
 	}
 
@@ -27,6 +36,7 @@ int main(int argc, char* argv[])
 		std::string line{};
 		while (std::getline(input, line))
 			text.insert_end(line);
+		text.print();
 		input.close();
 	}
 

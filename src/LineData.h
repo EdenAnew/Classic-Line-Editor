@@ -17,14 +17,14 @@ public:
 	Line& operator[](const size_t index);
 	void insert_end(std::string);
 	void insert_front(std::string);
-	void insert(std::string, int);
-	void remove(int);
-	void append(std::string, int);
-	void replace(std::string, int);
+	void insert(std::string, size_t);
+	void remove(size_t);
+	void append(std::string, size_t);
+	void replace(std::string, size_t);
 	void print();
 	void clear();
 private:
 	Line* head;
 	Line* tail;
-	int line_count;
+	size_t line_count;
 };

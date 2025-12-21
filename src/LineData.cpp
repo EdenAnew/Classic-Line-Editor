@@ -75,7 +75,7 @@ void LineList::insert_front(std::string str)
 	line_count++;
 }
 
-void LineList::insert(std::string str, int index)
+void LineList::insert(std::string str, size_t index)
 {
 	Line* indexed_line{ &(*this)[index] };
 	Line* new_line{ new Line{str, indexed_line, indexed_line->prev} };
@@ -87,7 +87,7 @@ void LineList::insert(std::string str, int index)
 	line_count++;
 }
 
-void LineList::remove(int index)
+void LineList::remove(size_t index)
 {
 	Line* indexed_line{ &(*this)[index] };
 	line_count--;
@@ -111,13 +111,13 @@ void LineList::remove(int index)
 	}
 }
 
-void LineList::append(std::string str, int index)
+void LineList::append(std::string str, size_t index)
 {
 	Line* indexed_line{ &(*this)[index] };
 	indexed_line->text += str;
 }
 
-void LineList::replace(std::string str, int index)
+void LineList::replace(std::string str, size_t index)
 {
 	Line* indexed_line{ &(*this)[index] };
 	indexed_line->text = str;
@@ -168,6 +168,7 @@ LineList& LineList::operator=(const LineList& other)
 	}
 
 	line_count = other.line_count;
+	return *this;
 }
 
 LineList::~LineList()

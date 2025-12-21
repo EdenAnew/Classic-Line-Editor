@@ -4,14 +4,14 @@
 #include <stdexcept>
 
 namespace FileHandler {
-	std::filesystem::path find_directory(char* filename, char* pathway = nullptr)
+	std::filesystem::path find_directory(char* filename, char* pathway)
 	{
 		std::filesystem::path chosen_path{};
 		if (pathway)
 		{
 			chosen_path = pathway;
 			if (!std::filesystem::exists(chosen_path))
-				throw std::invalid_argument("Path does not exist!");
+				throw std::invalid_argument("Path does not exist!\n");
 		}
 		else
 		{
@@ -30,21 +30,5 @@ namespace FileHandler {
 			return false;
 		in.close();
 		return true;
-	}
-
-	std::ofstream return_file_stream(char* filename, char* pathway = nullptr)
-	{
-		std::filesystem::path directory = find_directory(pathway);
-		directory += filename;
-		if (file_exists(directory))
-		{
-			std::ofstream file{ directory, std::ios::app };
-			return file;
-		}
-		else
-		{
-			std::ofstream file{ directory, std::ios::out };
-			return file;
-		}
 	}
 }

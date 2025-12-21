@@ -19,10 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CommandHandler.cpp" />
+    <ClCompile Include="src\FileHandler.cpp" />
     <ClCompile Include="src\LineData.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CommandHandler.h" />
+    <ClInclude Include="src\FileHandler.h" />
     <ClInclude Include="src\LineData.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -111,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
