@@ -1,4 +1,5 @@
 #include "LineData.h"
+#include "CommandHandler.h"
 #include "FileHandler.h"
 #include <filesystem>
 #include <fstream>
@@ -26,23 +27,43 @@ int main(int argc, char* argv[])
 		chosen_path = FileHandler::find_directory(argv[1]);
 	else
 	{
+		std::cout << argv[1] << " " << argv[2] << " " << argv[3] << " ";
 		std::cerr << "Error: Need file name to initialize to (and, optionally, a directory!)";
 		return 1;
 	}
 
 	if (FileHandler::file_exists(chosen_path))
 	{
-		std::ifstream input{chosen_path};
+		std::ifstream input_f{chosen_path};
 		std::string line{};
-		while (std::getline(input, line))
+		while (std::getline(input_f, line))
 			text.insert_end(line);
 		text.print();
-		input.close();
+		input_f.close();
+	}
+	std::cout << "Success! File location is: " << chosen_path << '\n';
+
+	std::string input{};
+	CommandHandler::text_ref = &text;
+
+	while (!CommandHandler::quit)
+	{
+		try {
+			std::getline(std::cin, input);
+			CommandHandler::ProcessCommands(input);
+		}
+		catch (const std::invalid_argument& e)
+		{
+			std::cerr << "Error: " << e.what() << "Type \'help\' to pull up the command menu!\n";
+		}
+		catch (const std::out_of_range& e)
+		{
+			std::cerr << "Error: " << e.what() << "Type \'help\' to pull up the command menu!\n";
+		}
 	}
 
-	std::ofstream output {chosen_path, std::ios::app};
-	
-	// Comes back with the file, then loops through the command handler until the user asks to quit the program.
-	// Invalid command! Type 'help' to pull up the command menu.
+	std::ofstream output{ chosen_path };
+	text.write_to_file(output);
+	output.close();
 	return 0;
 }

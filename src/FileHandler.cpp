@@ -15,10 +15,11 @@ namespace FileHandler {
 		}
 		else
 		{
-			chosen_path = ".\\Output Files";
+			chosen_path = "./LineEditorOutput";
 			if (!std::filesystem::exists(chosen_path))
 				std::filesystem::create_directory(chosen_path);
 		}
+		chosen_path += '/';
 		chosen_path += filename;
 		return chosen_path;
 	}

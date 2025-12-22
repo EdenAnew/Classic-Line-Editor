@@ -31,7 +31,7 @@ LineList::LineList(const LineList& other) : head(nullptr), tail(nullptr), line_c
 Line& LineList::operator[](const size_t index)
 {
 	if (index >= line_count)
-		throw std::out_of_range("Requested line does not exist!");
+		throw std::out_of_range("Requested line does not exist!\n");
 	
 	Line* iter{ head };
 
@@ -62,7 +62,10 @@ Line& LineList::operator[](const size_t index)
 void LineList::insert_end(std::string str)
 {
 	Line* new_line{ new Line{str, nullptr, tail}};
-	tail->next = new_line;
+	if (tail)
+		tail->next = new_line;
+	else
+		head = new_line;
 	tail = new_line;
 	line_count++;
 }
@@ -70,7 +73,10 @@ void LineList::insert_end(std::string str)
 void LineList::insert_front(std::string str)
 {
 	Line* new_line{ new Line{str, head, nullptr} };
-	head->prev = new_line;
+	if(head)
+		head->prev = new_line;
+	else
+		tail = new_line;
 	head = new_line;
 	line_count++;
 }
@@ -79,7 +85,8 @@ void LineList::insert(std::string str, size_t index)
 {
 	Line* indexed_line{ &(*this)[index] };
 	Line* new_line{ new Line{str, indexed_line, indexed_line->prev} };
-	indexed_line->prev->next = new_line;
+	if(indexed_line->prev)
+		indexed_line->prev->next = new_line;
 	indexed_line->prev = new_line;
 	if (index == 0)
 		head = new_line;
@@ -91,7 +98,14 @@ void LineList::remove(size_t index)
 {
 	Line* indexed_line{ &(*this)[index] };
 	line_count--;
-	if (indexed_line == head)
+	
+	if (indexed_line == head && indexed_line == tail)
+	{
+		head = nullptr;
+		tail = nullptr;
+		delete indexed_line;
+	}
+	else if (indexed_line == head)
 	{
 		head = indexed_line->next;
 		head->prev = nullptr;
@@ -148,6 +162,16 @@ void LineList::clear()
 	head = nullptr;
 	tail = nullptr;
 	line_count = 0;
+}
+
+void LineList::write_to_file(std::ofstream& out)
+{
+	Line* iter{ head };
+	while (iter)
+	{
+		out << iter->text << '\n';
+		iter = iter->next;
+	}
 }
 
 LineList& LineList::operator=(const LineList& other)
