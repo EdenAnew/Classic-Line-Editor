@@ -29,13 +29,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\LineData.h">
+    <ClInclude Include="include\LineData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\FileHandler.h">
+    <ClInclude Include="include\FileHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\CommandHandler.h">
+    <ClInclude Include="include\CommandHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

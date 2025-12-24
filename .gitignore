@@ -416,3 +416,11 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# CMake files upon implementation
+/out
+bin/
+build/
+/.vs
+.idea/
+CMakeSettings.json

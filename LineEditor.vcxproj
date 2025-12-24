@@ -25,9 +25,9 @@
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\CommandHandler.h" />
-    <ClInclude Include="src\FileHandler.h" />
-    <ClInclude Include="src\LineData.h" />
+    <ClInclude Include="include\CommandHandler.h" />
+    <ClInclude Include="include\FileHandler.h" />
+    <ClInclude Include="include\LineData.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
