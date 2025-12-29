@@ -38,6 +38,7 @@ namespace CommandHandler {
 		{"hel", []() { HelpMessage(); }},
 		{"help", []() { HelpMessage(); }},
 		{"qui", []() { quit = true; }},
-		{"quit", []() { quit = true; }}
+		{"quit", []() { quit = true; }},
+		{"close", []() { quit = true; }}
 	};
 }

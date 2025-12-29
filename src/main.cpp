@@ -1,6 +1,6 @@
-#include "LineData.h"
-#include "CommandHandler.h"
-#include "FileHandler.h"
+#include "../include/LineData.h"
+#include "../include/CommandHandler.h"
+#include "../include/FileHandler.h"
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -27,7 +27,6 @@ int main(int argc, char* argv[])
 		chosen_path = FileHandler::find_directory(argv[1]);
 	else
 	{
-		std::cout << argv[1] << " " << argv[2] << " " << argv[3] << " ";
 		std::cerr << "Error: Need file name to initialize to (and, optionally, a directory!)";
 		return 1;
 	}

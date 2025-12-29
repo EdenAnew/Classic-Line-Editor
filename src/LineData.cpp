@@ -1,5 +1,6 @@
-#include "LineData.h"
+#include "../include/LineData.h"
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include <iostream>
 
@@ -18,11 +19,14 @@ LineList::LineList(const LineList& other) : head(nullptr), tail(nullptr), line_c
 	head = new Line{ other.head->text, nullptr, nullptr };
 	Line* iter{head};
 	Line* iter_next{ other.head->next };
+	if (!iter_next)
+		tail = head;
 	while (iter_next)
 	{
 		iter->next = new Line{iter_next->text, nullptr, iter};
 		iter = iter->next;
 		iter_next = iter_next->next;
+		tail = iter;
 	}
 
 	line_count = other.line_count;
@@ -144,6 +148,18 @@ void LineList::print()
 	while (iter)
 	{
 		std::cout << line_num << " | " << iter->text << '\n';
+		iter = iter->next;
+		line_num++;
+	}
+}
+
+void LineList::print(std::stringstream& stream)
+{
+	Line* iter{ head };
+	int line_num{ 1 };
+	while (iter)
+	{
+		stream << line_num << " | " << iter->text << '\n';
 		iter = iter->next;
 		line_num++;
 	}

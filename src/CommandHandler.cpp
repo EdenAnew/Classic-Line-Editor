@@ -1,5 +1,5 @@
-#include "CommandHandler.h"
-#include "LineData.h"
+#include "../include/CommandHandler.h"
+#include "../include/LineData.h"
 #include <string>
 #include <functional>
 #include <vector>

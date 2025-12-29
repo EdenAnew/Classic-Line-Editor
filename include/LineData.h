@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <fstream>
+#include <sstream>
 
 struct Line {
 	std::string text;
@@ -23,6 +24,7 @@ public:
 	void append(std::string, size_t);
 	void replace(std::string, size_t);
 	void print();
+	void print(std::stringstream &stream);
 	void clear();
 	void write_to_file(std::ofstream&);
 private:
