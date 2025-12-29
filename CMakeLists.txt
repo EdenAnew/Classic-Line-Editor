@@ -11,3 +11,5 @@ target_include_directories(ClassicLineEditor PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}
 add_executable(TESTS_ClassicLineEditor "tests/TESTS_LineData.cpp" "tests/TESTS_FileHandler.cpp" "tests/TESTS_CommandHandler.cpp")
 target_link_libraries(TESTS_ClassicLineEditor PRIVATE EditorClasses)
 target_include_directories(TESTS_ClassicLineEditor PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
+
+install(TARGETS ClassicLineEditor)
