@@ -25,7 +25,12 @@ Usage of the program will then continue until the user inputs 'quit' or 'close' 
 git clone URL
 ```
 3. Upon navigating to the created directory, make a build folder and navigate into it.
-4. Run the following command:
+4. Set up your generator with the command:
+```
+cmake .. -G "Visual Studio 18 2026"
+```
+Note that the generator is different from user to user. See the CMake docs for the list of all available generators.
+6. Run the following command:
 ```
 cmake --build . --config Release
 ```
@@ -33,7 +38,7 @@ cmake --build . --config Release
 ```
 cmake --install .
 ```
-6. From here, there should be an "install" folder within your build, containing a release folder, which should contain the ClassicLineBuilder.exe. Copy this path.
+6. From here, the terminal should print the location of the "install" folder, follow this path and find the folder containing the ClassicLineBuilder.exe. Copy this path.
 7. Navigate to the "Edit system environment variables" program
 8. Advanced > Environment Variables > Under 'System Variables', click 'Path' > Edit > New > Paste the copied file path into the new textbox and hit "OK"
 
