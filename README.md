@@ -30,6 +30,7 @@ git clone URL
 cmake .. -G "Visual Studio 18 2026"
 ```
 Note that the generator is different from user to user. See the CMake docs for the list of all available generators.
+
 6. Run the following command:
 ```
 cmake --build . --config Release
