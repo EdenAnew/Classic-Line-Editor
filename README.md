@@ -31,16 +31,16 @@ cmake .. -G "Visual Studio 18 2026"
 ```
 Note that the generator is different from user to user. See the CMake docs for the list of all available generators.
 
-6. Run the following command:
+5. Run the following command:
 ```
 cmake --build . --config Release
 ```
-5. Run the following Command:
+6. Run the following Command:
 ```
 cmake --install .
 ```
-6. From here, the terminal should print the location of the "install" folder, follow this path and find the folder containing the ClassicLineBuilder.exe. Copy this path.
-7. Navigate to the "Edit system environment variables" program
-8. Advanced > Environment Variables > Under 'System Variables', click 'Path' > Edit > New > Paste the copied file path into the new textbox and hit "OK"
+7. From here, the terminal should print the location of the "install" folder, follow this path and find the folder containing the ClassicLineBuilder.exe. Copy this path.
+8. Navigate to the "Edit system environment variables" program
+9. Advanced > Environment Variables > Under 'System Variables', click 'Path' > Edit > New > Paste the copied file path into the new textbox and hit "OK"
 
 Now, you should be able to run this program from the command line, on any user from any directory, by first denoting a command with "ClassicLineEditor.exe".
